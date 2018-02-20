@@ -35,10 +35,11 @@ abstract class DrupalBoot extends BaseBoot
                 return $scan;
             }
             $next = dirname($scan);
+            $next = Path::canonicalize($next);
             if ($next == $scan) {
                 return false;
             }
-            $scan = Path::canonicalize($next);
+            $scan = $next;
             if ($scan == $root) {
                 return false;
             }
